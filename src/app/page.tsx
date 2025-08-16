@@ -178,9 +178,9 @@ export default function ChatPage() {
           <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
             Ashish AI
           </h1>
-          <p className="text-lg text-gray-400 mt-2">
+          {/* <p className="text-lg text-gray-400 mt-2">
             A Conversation with my Digital Twin, powered by Gemini.
-          </p>
+          </p> */}
         </header>
 
         {/* Step 2: The contained chat window */}
