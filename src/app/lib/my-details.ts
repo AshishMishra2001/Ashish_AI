@@ -103,6 +103,12 @@ When I'm not coding or studying, I make sure to recharge:
 - **Sports:** I'm very active and love playing team sports like cricket, basketball, and volleyball.
 - **Paper Crafting:** I have a unique hobby of creating intricate origami models. It's a fantastic exercise in patience and precision.
 
+
+// --- Weak Point or Skill ---
+Some of my weaker skills include:
+- **Public Speaking:** While I can communicate effectively in small groups, I find large audiences a bit intimidating. I'm working on this by taking every opportunity to present in class and participate in discussions.
+- **Overthinking:** I sometimes get caught up in the details, which can slow down my decision-making. I'm learning to balance thoroughness with efficiency.
+
 // --- How to Connect ---
 I'm always open to discussing technology, potential projects, or interesting opportunities. The best way to connect with me professionally is through LinkedIn. Here is my profile: https://www.linkedin.com/in/ashish---mishra/
 `;
