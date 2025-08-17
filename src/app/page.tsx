@@ -1,128 +1,32 @@
-// // src/app/page.tsx
-// 'use client'; // This directive tells Next.js this is a client-side component
-
-// import { useState, FormEvent, useRef, useEffect } from 'react';
-// import Linkify from 'react-linkify'; // The library for making links clickable
-
-// // Define the structure of a message object
-// interface Message {
-//   text: string;
-//   isUser: boolean;
-// }
-
-// export default function ChatPage() {
-//   // State to hold the list of messages
-//   const [messages, setMessages] = useState<Message[]>([]);
-//   // State for the user's current input
-//   const [input, setInput] = useState('');
-//   // State to track if the AI is thinking
-//   const [isLoading, setIsLoading] = useState(false);
-//   // Ref to the chat container for auto-scrolling
-//   const chatContainerRef = useRef<HTMLDivElement>(null);
-
-//   // Effect to scroll to the bottom of the chat when messages change
-//   useEffect(() => {
-//     chatContainerRef.current?.scrollTo({ top: chatContainerRef.current.scrollHeight, behavior: 'smooth' });
-//   }, [messages]);
-
-//   // Function to handle form submission
-//   const handleSubmit = async (e: FormEvent) => {
-//     e.preventDefault();
-//     if (!input.trim() || isLoading) return;
-
-//     const userMessage: Message = { text: input, isUser: true };
-//     setMessages((prev) => [...prev, userMessage]); // Add user message to chat
-//     setInput(''); // Clear input field
-//     setIsLoading(true); // Set loading state to true
-
-//     try {
-//       // Send the user's message to our backend API
-//       const res = await fetch('/api/chat', {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify({ message: input }),
-//       });
-
-//       if (!res.ok) throw new Error('API request failed');
-
-//       const data = await res.json();
-//       const aiMessage: Message = { text: data.response, isUser: false };
-//       setMessages((prev) => [...prev, aiMessage]); // Add AI response to chat
-
-//     } catch (error) {
-//       console.error(error);
-//       // Show an error message in the chat
-//       const errorMessage: Message = { text: "Sorry, I'm having a little trouble thinking right now. Please try again later.", isUser: false };
-//       setMessages((prev) => [...prev, errorMessage]);
-//     } finally {
-//       setIsLoading(false); // Set loading state to false
-//     }
-//   };
-
-//   return (
-//     <div className="flex flex-col h-screen bg-gray-900 text-white font-sans">
-//       <header className="bg-gray-800 p-4 shadow-md">
-//         <h1 className="text-2xl font-bold text-center">Chat with Ashish-AI</h1>
-//       </header>
-
-//       <main ref={chatContainerRef} className="flex-grow overflow-y-auto p-4 space-y-4">
-//         {messages.map((msg, index) => (
-//           <div key={index} className={`flex ${msg.isUser ? 'justify-end' : 'justify-start'}`}>
-//             {/* === CHANGE START === */}
-//             <p className={`max-w-lg p-3 rounded-2xl break-words ${msg.isUser ? 'bg-blue-600 rounded-br-none' : 'bg-gray-700 rounded-bl-none'}`}>
-//               <Linkify componentDecorator={(decoratedHref, decoratedText, key) => (
-//                   <a href={decoratedHref} key={key} target="_blank" rel="noopener noreferrer" className="text-blue-300 hover:underline">
-//                     {decoratedText}
-//                   </a>
-//                 )}>
-//                 {msg.text}
-//               </Linkify>
-//             </p>
-//             {/* === CHANGE END === */}
-//           </div>
-//         ))}
-//         {isLoading && (
-//           <div className="flex justify-start">
-//               <p className="max-w-lg p-3 rounded-2xl bg-gray-700 rounded-bl-none animate-pulse">
-//                 Thinking...
-//               </p>
-//           </div>
-//         )}
-//       </main>
-
-//       <footer className="p-4 bg-gray-800">
-//         <form onSubmit={handleSubmit} className="flex items-center space-x-2">
-//           <input
-//             type="text"
-//             value={input}
-//             onChange={(e) => setInput(e.target.value)}
-//             className="flex-grow p-3 rounded-full bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-//             placeholder="Ask me anything about my work, hobbies, or thoughts..."
-//             disabled={isLoading}
-//           />
-//           <button type="submit" className="bg-blue-600 text-white font-bold py-3 px-5 rounded-full hover:bg-blue-700 disabled:bg-blue-800 disabled:cursor-not-allowed" disabled={isLoading}>
-//             Send
-//           </button>
-//         </form>
-//       </footer>
-//     </div>
-//   );
-// }
-
 
 // src/app/page.tsx
 'use client'; 
 
 import { useState, FormEvent, useRef, useEffect } from 'react';
 import Linkify from 'react-linkify';
+// Step 1: Import the icons you want to use
+import { FaLinkedin, FaGithub, FaEnvelope, FaInstagram, FaFacebook } from 'react-icons/fa6';
 
 interface Message {
   text: string;
   isUser: boolean;
 }
 
+// Step 2: Define your prompt suggestions
+const promptSuggestions = [
+  "What is your M.Tech research about?",
+  "Tell me about the DoctorHunt project.",
+  "What are your main technical skills?",
+  "What are your hobbies?",
+];
+
 export default function ChatPage() {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      text: "Hi there! I'm Ashish's AI persona. Feel free to ask me anything about his skills, projects, or experience. I'm here to help!",
+      isUser: false
+    }
+  ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -130,6 +34,11 @@ export default function ChatPage() {
   useEffect(() => {
     chatContainerRef.current?.scrollTo({ top: chatContainerRef.current.scrollHeight, behavior: 'smooth' });
   }, [messages]);
+
+  // Step 3: Create a function to handle suggestion clicks
+  const handleSuggestionClick = (prompt: string) => {
+    setInput(prompt);
+  };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -162,32 +71,26 @@ export default function ChatPage() {
     }
   };
 
-  // --- vvv THIS IS THE NEW, PROFESSIONAL LAYOUT vvv ---
   return (
-    // Main container with the aurora background
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white font-sans p-4 relative overflow-hidden">
       
-      {/* The animated aurora background element */}
       <div className="absolute top-1/2 left-1/2 w-[1400px] h-[1400px] -translate-x-1/2 -translate-y-1/2 rounded-full aurora-background opacity-30"></div>
 
-      {/* The content container that sits on top of the background */}
+      {/* Main container for all content */}
       <div className="w-full max-w-3xl mx-auto flex flex-col h-[90vh] z-10">
         
-        {/* Step 1: The new, polished header */}
         <header className="text-center mb-8">
           <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
-            Ashish AI
+            Ashish's AI
           </h1>
-          {/* <p className="text-lg text-gray-400 mt-2">
-            A Conversation with my Digital Twin, powered by Gemini.
-          </p> */}
+          <p className="text-lg text-gray-400 mt-2">
+            A Conversation with my Digital Twin.
+          </p>
         </header>
 
-        {/* Step 2: The contained chat window */}
-        <div className="flex-grow bg-black/30 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-700 flex flex-col">
+        <div className="flex-grow bg-black/30 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-700 flex flex-col overflow-hidden">
           
-          {/* The scrollable message area */}
-          <main ref={chatContainerRef} className="flex-grow overflow-y-auto p-6 space-y-6">
+          <main ref={chatContainerRef} className="flex-grow min-h-0 overflow-y-auto p-6 space-y-6">
             {messages.map((msg, index) => (
               <div key={index} className={`flex ${msg.isUser ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-lg p-4 rounded-2xl break-words text-base leading-relaxed ${msg.isUser ? 'bg-blue-600 rounded-br-none' : 'bg-gray-800 rounded-bl-none'}`}>
@@ -201,16 +104,36 @@ export default function ChatPage() {
                 </div>
               </div>
             ))}
+
+            {/* Step 4: Conditionally render prompt suggestions */}
+            {messages.length === 1 && !isLoading && (
+              <div className="flex flex-col items-center animate-fade-in">
+                <p className="text-gray-400 mb-4">Or try one of these prompts:</p>
+                <div className="flex flex-wrap justify-center gap-2">
+                  {promptSuggestions.map((prompt) => (
+                    <button
+                      key={prompt}
+                      onClick={() => handleSuggestionClick(prompt)}
+                      className="bg-gray-800/50 hover:bg-gray-700/70 text-sm text-gray-200 px-4 py-2 rounded-full transition-colors duration-300"
+                    >
+                      {prompt}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {isLoading && (
               <div className="flex justify-start">
-                  <div className="max-w-lg p-4 rounded-2xl bg-gray-800 rounded-bl-none animate-pulse">
-                    Thinking...
-                  </div>
+                <div className="max-w-lg p-4 rounded-2xl bg-gray-800 rounded-bl-none flex items-center space-x-2">
+                  <span className="h-2 w-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0s' }}></span>
+                  <span className="h-2 w-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></span>
+                  <span className="h-2 w-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></span>
+                </div>
               </div>
             )}
           </main>
 
-          {/* Step 3: The polished input form */}
           <footer className="p-4 bg-black/20 border-t border-gray-700 rounded-b-2xl">
             <form onSubmit={handleSubmit} className="flex items-center space-x-4">
               <input
@@ -221,12 +144,42 @@ export default function ChatPage() {
                 placeholder="Ask me anything..."
                 disabled={isLoading}
               />
-              <button type="submit" className="bg-blue-600 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-700 disabled:bg-blue-800 disabled:cursor-not-allowed transition-colors duration-300" disabled={isLoading}>
-                Send
+              <button 
+                type="submit" 
+                className="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 disabled:bg-blue-800 disabled:cursor-not-allowed transition-colors duration-300 flex-shrink-0" 
+                disabled={isLoading}
+                aria-label="Send message"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                  <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z" />
+                </svg>
               </button>
             </form>
           </footer>
         </div>
+        
+        {/* Step 5: The new social links footer */}
+        <div className="text-center mt-8">
+          <p className="text-gray-500 mb-4">Connect with me</p>
+          <div className="flex justify-center items-center space-x-6">
+            <a href="https://www.linkedin.com/in/ashish---mishra/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <FaLinkedin size={24} />
+            </a>
+            <a href="https://github.com/AshishMishra2001" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <FaGithub size={24} />
+            </a>
+            <a href="mailto:amishra8094@gmail.com" aria-label="Send an Email" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <FaEnvelope size={24} />
+            </a>
+            <a href="https://www.instagram.com/ashishmishra_official/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <FaInstagram size={24} />
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100008701507702/" target="_blank" rel="noopener noreferrer" aria-label="Facebook Profile" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <FaFacebook size={24} />
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
   );
