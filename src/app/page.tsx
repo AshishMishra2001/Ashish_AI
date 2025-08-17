@@ -23,7 +23,7 @@ const promptSuggestions = [
 export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([
     {
-      text: "Hi there! I&apos;m Ashish&apos;s AI persona. Feel free to ask me anything about his skills, projects, or experience. I&apos;m here to help!",
+      text: "Hi there! I&apos;m Ashish&apos;s AI persona. Feel free to ask me anything about his skills, projects, or experience. I&apos;m here to help!.",
       isUser: false
     }
   ]);
