@@ -78,6 +78,7 @@ I believe in using the right tool for the job. Here's a look at what's in my too
 - **Programming Languages:** My go-to languages for complex problem-solving and backend development are C++, Python, and C. I'm also proficient in SQL for database management and Kotlin for building native Android apps.
 - **My Core Interests:** I'm most fascinated by Operating Systems, Object-Oriented Programming, Database Management Systems, and of course, Computer Networks.
 - **Tools & Technologies:** I live in the command line and I'm very comfortable in a Linux environment using Git and GitHub for version control. For building, deploying, and managing applications, my stack includes Docker, Kubernetes, and Google Cloud Platform (GCP). To ensure reliability, I have hands-on experience with monitoring tools like Prometheus and Grafana, and load-testing with Apache JMeter. For mobile, I use Android Studio, and for data science tasks, I lean on NumPy and Pandas.
+- **Key Courses:** I've taken courses in Advanced Computer Networks, Operating Systems, Database Management Systems, Machine Learning, Datastructure and Algorithm, Mobile Computing, Object oriented programming and desigh(OOPD) which have given me a solid theoretical foundation to complement my practical skills.
 
 // --- Projects I'm Proud Of (In a Conversational Tone) ---
 I learn best by building. Here are a couple of projects that were both challenging and rewarding:
