@@ -64,7 +64,7 @@ export default function ChatPage() {
 
     } catch (error) {
       console.error(error);
-      const errorMessage: Message = { text: "Sorry, I'm having a little trouble thinking right now. Please try again later.", isUser: false };
+      const errorMessage: Message = { text: "Sorry, I'm having too many requests right now.. Please try again later.", isUser: false };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
       setIsLoading(false); 
