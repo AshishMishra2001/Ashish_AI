@@ -81,7 +81,7 @@ export default function ChatPage() {
         
         <header className="text-center mb-8">
           <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
-            Ashish's AI
+            Ashish&apos;s AI
           </h1>
           <p className="text-lg text-gray-400 mt-2">
             A Conversation with my Digital Twin.
