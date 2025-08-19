@@ -18,6 +18,7 @@ const promptSuggestions = [
   "Tell me about the DoctorHunt project.",
   "What are your main technical skills?",
   "What are your hobbies?",
+  "I want to view your resume",
 ];
 
 export default function ChatPage() {
@@ -86,6 +87,25 @@ export default function ChatPage() {
           <p className="text-lg text-gray-400 mt-2">
             A Conversation with my Digital Twin.
           </p>
+
+          {/*
+            <div className="mt-6">
+              <a 
+                href="/Ashish-Mishra-Resume.pdf" 
+                target="_blank"
+                rel="noopener noreferrer"
+                //download="Ashish-Mishra-Resume.pdf"
+                className="bg-gray-700/50 hover:bg-gray-600/70 text-gray-200 font-semibold px-6 py-3 rounded-full transition-colors duration-300 inline-flex items-center space-x-2"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+                  <path d="M10.75 2.75a.75.75 0 0 0-1.5 0v8.614L6.295 8.235a.75.75 0 1 0-1.09 1.03l4.25 4.5a.75.75 0 0 0 1.09 0l4.25-4.5a.75.75 0 0 0-1.09-1.03l-2.955 3.129V2.75Z" />
+                  <path d="M3.5 12.75a.75.75 0 0 0-1.5 0v2.5A2.75 2.75 0 0 0 4.75 18h10.5A2.75 2.75 0 0 0 18 15.25v-2.5a.75.75 0 0 0-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5Z" />
+                </svg>
+                <span>My Resume</span>
+              </a>
+            </div> */}
+            
+
         </header>
 
         <div className="flex-grow bg-black/30 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-700 flex flex-col overflow-hidden">
@@ -157,6 +177,23 @@ export default function ChatPage() {
             </form>
           </footer>
         </div>
+
+
+        {/* <div className="text-center mt-8">
+          <a 
+            href="/Ashish-Mishra-Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gray-700/50 hover:bg-gray-600/70 text-gray-200 font-semibold px-6 py-3 rounded-full transition-colors duration-300 inline-flex items-center space-x-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+              <path d="M10.75 2.75a.75.75 0 0 0-1.5 0v8.614L6.295 8.235a.75.75 0 1 0-1.09 1.03l4.25 4.5a.75.75 0 0 0 1.09 0l4.25-4.5a.75.75 0 0 0-1.09-1.03l-2.955 3.129V2.75Z" />
+              <path d="M3.5 12.75a.75.75 0 0 0-1.5 0v2.5A2.75 2.75 0 0 0 4.75 18h10.5A2.75 2.75 0 0 0 18 15.25v-2.5a.75.75 0 0 0-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5Z" />
+            </svg>
+            <span>View Resume</span> 
+          </a>
+        </div> */}
+
         
         {/* Step 5: The new social links footer */}
         <div className="text-center mt-8">
@@ -165,9 +202,9 @@ export default function ChatPage() {
             <a href="https://www.linkedin.com/in/ashish---mishra/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="text-gray-400 hover:text-white transition-colors duration-300">
               <FaLinkedin size={24} />
             </a>
-            <a href="https://github.com/AshishMishra2001" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="text-gray-400 hover:text-white transition-colors duration-300">
+            {/* <a href="https://github.com/AshishMishra2001" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="text-gray-400 hover:text-white transition-colors duration-300">
               <FaGithub size={24} />
-            </a>
+            </a> */}
             <a href="mailto:amishra8094@gmail.com" aria-label="Send an Email" className="text-gray-400 hover:text-white transition-colors duration-300">
               <FaEnvelope size={24} />
             </a>
@@ -177,7 +214,39 @@ export default function ChatPage() {
             <a href="https://www.facebook.com/profile.php?id=100008701507702/" target="_blank" rel="noopener noreferrer" aria-label="Facebook Profile" className="text-gray-400 hover:text-white transition-colors duration-300">
               <FaFacebook size={24} />
             </a>
+
+            {/* <a 
+            href="/Ashish-Mishra-Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gray-700/50 hover:bg-gray-600/70 text-gray-200 font-semibold px-6 py-3 rounded-full transition-colors duration-300 inline-flex items-center space-x-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+              <path d="M10.75 2.75a.75.75 0 0 0-1.5 0v8.614L6.295 8.235a.75.75 0 1 0-1.09 1.03l4.25 4.5a.75.75 0 0 0 1.09 0l4.25-4.5a.75.75 0 0 0-1.09-1.03l-2.955 3.129V2.75Z" />
+              <path d="M3.5 12.75a.75.75 0 0 0-1.5 0v2.5A2.75 2.75 0 0 0 4.75 18h10.5A2.75 2.75 0 0 0 18 15.25v-2.5a.75.75 0 0 0-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5Z" />
+            </svg>
+            <span>View Resume</span> 
+          </a> */}
+
+
           </div>
+
+        <div className="text-center mt-8">
+          <a 
+            href="/Ashish-Mishra-Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gray-700/50 hover:bg-gray-600/70 text-gray-200 font-semibold px-6 py-3 rounded-full transition-colors duration-300 inline-flex items-center space-x-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+              <path d="M10.75 2.75a.75.75 0 0 0-1.5 0v8.614L6.295 8.235a.75.75 0 1 0-1.09 1.03l4.25 4.5a.75.75 0 0 0 1.09 0l4.25-4.5a.75.75 0 0 0-1.09-1.03l-2.955 3.129V2.75Z" />
+              <path d="M3.5 12.75a.75.75 0 0 0-1.5 0v2.5A2.75 2.75 0 0 0 4.75 18h10.5A2.75 2.75 0 0 0 18 15.25v-2.5a.75.75 0 0 0-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5Z" />
+            </svg>
+            <span>View Resume</span> 
+          </a>
+        </div>
+
+
         </div>
 
       </div>
