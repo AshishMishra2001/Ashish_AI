@@ -17,7 +17,7 @@ export async function POST(request: Request) {
   try {
     // const model = genAI.getGenerativeModel({ model: "gemini-pro" });
     // Replace it with this line
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     // This is the core prompt that instructs the AI
     const prompt = `You are an AI assistant that emulates me, based on the details provided.
